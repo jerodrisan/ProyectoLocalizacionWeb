@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>Visualización de mapas</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHp5Zbran2llUKgrRgPfEednSNk7J54OE"></script>
+	    <script type="text/javascript" src="Javascript/funciones_mapa.js"> </script>
+        <script type="text/javascript" src="Javascript/perfil_mapa.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        
+        <link rel="stylesheet" href="css/style_pruebamapa.css">
+        
+       
+    </head>
+    <body>
+
+        <!-- DIV PRINCIPAL-->
+        <div class="container text-center" id="cabecera_logado">
+
+            <!-- ******** CABECERA ****-->
+			<div class="row d-flex align-items-center" id="row_cabecera">
+
+				<div class="col-sm-4" id="div_cabecera">
+				<h6><strong>Bienvenido</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong></strong> </h6>						
+				</div>		
+				
+				<div class="col-sm-4" id="div_logout">
+					<button type="button" class="btn btn-outline-primary" id="btn_cerrarsesion">Cerrar Sesión</button>	
+				</div>
+                            
+                <div class="col-sm-4" id="div_desenganchar">
+                    <button type="button" class="btn btn-outline-secondary" id="btn_desenganchar" data-toggle="modal" data-target="#modal_desenganchar">Desenganchar Usuario</button>                                   
+                    <img src="imagenes/if_question-circle_383085.png" data-toggle="modal" data-target="#modal_interrogante">                                  
+                </div>   
+
+			</div>
+
+            <!--********** SEGUNDA FILA QUE ENGLOBA DOS COLUMNAS ******-->
+			<div class="row" id="second_row">
+				<!--****** primera columna ************-->
+				<div class="col-sm-6">
+					<div class="row d-flex align-items-center" id="second_row_1" style="height: 150px">
+						<div class="col-sm-12" >
+							<h3>Gestion de mapas guardados</h3>							
+							<h6> Seleccione contacto para cargar la ruta que quiera y ver sus datos:</h6>
+						</div>
+					</div>
+					<div class="row d-flex align-items-center" id="second_row_2"  style="height: 200px">
+						<div class="col-sm-12">
+							<select class="custom-select" name="contactos" id="contactos" style="width: 300px">
+								<!--<option selected>Open this select menu</option>
+	  							<option value="1">One</option>
+	  							<option value="2">Two</option>
+	  							<option value="3">Three</option>-->
+							</select>
+							<p>
+							<h6> Seleccione una ruta:</h6>
+							</p>
+							<p>
+							<select class="custom-select" name="numeroSesion" multiple="multiple" id="numSesion" style="width: 300px">
+							</select>
+							</p>
+						</div>
+					</div>
+					<div class="row d-flex align-items-center"" id="second_row_3" style="height: 100px">
+						<div class="col-sm-12">
+							<input class="btn btn-primary" type="button" value="Cargar ruta" id="cargarPolylines">
+							<input class="btn btn-primary" type="button" value="Borrar ruta" id="borrarSesion">
+							<input class="btn btn-primary" type="button" value="Limpiar mapa" id="limpiarMapa">
+						</div>
+					</div>
+				</div>
+				<!--*********segunda columna ***********-->
+				<div class="col-sm-6">
+					<div class="row d-flex align-items-center" id="second_row_4" style="height: 150px">
+						<div class="col-sm-12" >
+							<h3>Ver contactos en directo</h3>
+							<h6> Seleccione contacto y pulse si quiere ver la ruta que sigue o bien el ultimo punto en el que se encuentra</h6>
+						</div>
+					</div>
+					<div class="row d-flex align-items-center" id="second_row_5"  style="height: 200px">
+						<div class="col-sm-12">
+							 <select class="custom-select" name="selectLive" id="selectLive" style="width: 300px">			 	
+							 </select> 
+						</div>
+					</div>
+					<div class="row d-flex align-items-center"" id="second_row_6" style="height: 100px">
+						<div class="col-sm-12">
+							<input class="btn btn-primary evento" type="button" value="Ver seguimiento" id="eventoLive">
+							<input class="btn btn-primary evento" type="button" value="Ver ultimo punto" id="cargarMarcad">	
+							<input class="btn btn-primary" type="button" value="Limpiar mapa" id="limpiarMapa2">											
+						</div>
+					</div>	
+				</div>
+			</div>
+
+
+            <!-- ********** AMPLIACION DE SEGUNDA COLUMNA donde ponemos opcion de segmentar datos de veloc, etc, (solo para gesion de mapas **-->
+            <div class="row" id="second_row_ampliacion">
+                <div class="col-sm-12">
+                    <div class="row d-flex align-items-center" id="second_row_ampli_1" style="height: 80px">
+                        <div class="col-sm-12" >
+                            Opcional:<br> Escriba los valores de inicio y fin en km para ver los datos de velocidad , distancia, desnivel , etc en dicho tramo<br>
+                            (solo para gestion de mapas. Ej: Desde(km) 0.5 Hasta 5.7 (desde 500 metros hasta el km 5.7
+                        </div>
+                    </div>
+                    <div class="row d-flex align-items-center" id="second_row_ampli_2" style="height: 80px">
+                        <div class="col-sm-3" ></div>
+                        <div class="col-sm-3" >
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Desde (km)</span>
+                                </div>
+                                <input type="number" class="form-control" placeholder="inicio" aria-label="Username" aria-describedby="basic-addon1" id="segment_from" >
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-3" >
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Hasta (km)</span>
+                                </div>
+                                <input type="number" class="form-control" placeholder="fin" aria-label="Username" aria-describedby="basic-addon1" id="segment_to" >
+                               
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-3" >   
+                            <div class="input-group mb-3">
+                                <input class="btn btn-primary" type="button" value="Aceptar" id="ver_segmento" disabled="true">  
+                             </div>
+                         </div>                                    
+                    </div>                               
+                </div>                             
+            </div> 
+
+            <!--************* TERCERA FILA donde se ponen datos de velocidad etc ***********-->
+			<div class="row" id="third_row">
+				<div class="col mini-box">
+					<label id="label_veloc">VELOCIDAD</label> <br>                   
+                            <label id='label_velocidad'>0 Km/h</label>
+                </div>
+                <div class="col mini-box">
+                                          DISTANCIA TOTAL<br>
+                            <label id='label_distancia'>0 m</label>        			
+                </div>
+                <div class="col mini-box">
+                                         TIEMPO EMPLEADO<br>
+                             <label id='label_tiempo'>0 s</label>        			
+                </div>
+                <div class="col mini-box">
+                                         VELOCIDAD MÁXIMA<br>
+                             <label id='label_velmax'>0 km/h</label>        			
+                </div>
+                <div class="col mini-box">
+                                        DESNIVEL ACUMULADO<br>
+                                        <label id='label_desnivel'>  0 m</label>        			
+                </div>
+                <div class="col mini-box">
+                                        PENDIENTE ACUMULADA<br>
+                                        <label id='label_pendiente'>  0 %</label>        			
+                </div>
+			</div>
+
+            <!--************      4º fila LUGAR DE PASO **********-------------------------->
+            <div class="row" id="fourth_row">
+				<div class="col mini-box">
+					<label id="label_lug"></label>LUGAR DE PASO<br>
+                	<label id="label_lugar"></label> <label id="label_lugar2"></label><br>
+                	<label id="label_lugar3"></label> <label id="label_lugar4"></label>
+				</div>				
+			</div>
+
+            <!--********* mapa de google **************-->
+			<div id="map-canvas"></div>
+
+            
+
+
+            <!--********* Agregamos grafico de alturas ****-->                        
+            <canvas id="myChart" width="400" height="150" style="display:none"></canvas>
+
+            <!-- ******** agregamos un footer **********-->
+            <footer class="text-center">
+                <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+                </a><br><br>
+                <p>Theme Made By
+                    <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit chukkyy.com">www.chukkyy.com</a>
+                </p> 
+            </footer>
+        </div>   
+
+        <!-- FINALMENTE NO MOSTRAMOS UN DIV PARA REGISTRARSE O INGRESAR EN CASO SESION CERRADA O QUE NO HAYA SESION Y OCULTAMOS EL PRINCIPAL -->
+        <div class="div-nologado" id="cabecera_nologado" hidden>
+            <h2>Sesión caducada o cerrada. Ingrese de nuevo o Registrese como nuevo usuario</h2>
+            <div class="divcentral">
+                <div class="registro-nologado">                  
+                    <!--<h6><strong>Bienvenido </strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong></strong> </h6>-->
+                    <button type="button" class="btn btn-outline-primary" id="btn_registrarse">Registrarse</button>
+                   <!--<button type="button" class="boton1" id="btn_registrarse">Registrarse</button>-->				
+               </div>              
+               <div class="ingresar-nologado">
+                   <button type="button" class="btn btn-outline-primary" id="btn_ingresar">Ingresar</button>
+                   <!--<button type="button" class="boton2" id="btn_ingresar">Ingresar</button>-->
+               </div>	
+            </div>
+        </div> 
+
+        <!-- ************** MODAL PARA INFORMACION DE DESENGANCHAR USUARIO *********************-->
+        <div class="modal" tabindex="-1" role="dialog" id="modal_interrogante">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Desenganchar usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Si no puede entrar en la app movil debido a que sale el siguiente mensaje: "Usted esta logado en otro dis
+                            positivo, desconectese y vuelva a intentarlo" , asegurese de que no esta conectado en otro dispositivo.
+                            En caso de no ser asi es posible que se haya quedado enganchada al app por un cierre inesperado . Pulse desenganchar para poder entrar
+                            en la app movil.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>                                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ************** MODAL PARA DESENGANCHAR USUARIO ******************
+        //En caso de que un usuario no pueda entrar en la app del movil porque el sistema le indica que esta logueado en otro dispositivo
+            //cuando en realidad no lo está, es debido a que se ha quedado enganchado y hay que desengancharlo  
+        --> 
+        
+        <div class="modal" tabindex="-1" role="dialog" id="modal_desenganchar">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Info desenganchar usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Desea desenganchar al usuario <strong id="email_admin"></strong> de la app movil?. 
+                                (Asegurese de que no esta logado en otro dispositivo movil o tablet) .</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>  
+                        <button type="button" class="btn btn-primary" id="si_desenganchar">Si</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="modal" tabindex="-1" role="dialog" id="modal_desenganchado">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <h5 class="modal-title">Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Operacion correcta.<br>El usuario ya puede entrar en la app movil.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="ok_desenganchado">ok</button>                                      
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+    </body>
+
+    
+
+    
+</html>
+

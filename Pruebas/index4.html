@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+        <title>Hey this is a prueba</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css_nuevo.css">
+        <script src="carruseles.js"></script>
+        <script>
+            window.addEventListener("load",iniciarEventos);  //window.onload=iniciarEventos;        
+            
+         
+            function iniciarEventos(){
+                document.getElementById("btn_alta_usu").addEventListener("click",alta_Usu);
+                document.getElementById("bot-cerrar-modal").addEventListener("click", cerrar_Modal1);
+                document.getElementsByClassName("close-modal")[0].addEventListener("click", cerrar_Modal1); //primer modal              
+                
+                window.onclick = function(event){                
+                    if(event.target == document.getElementById("modal-1-id")){                        
+                        cerrar_Modal1();
+                    }                
+                }
+               
+            }
+         
+            function alta_Usu(){               
+                document.getElementById("modal-1-id").style.display="block";
+            }
+
+            function cerrar_Modal1(){                
+                document.getElementById("modal-1-id").style.display="none";
+            }  
+            
+         
+        
+        </script>
+    </head>
+    <body onload="load_carrusel2()">
+        
+        <div class="grid-container">
+
+            <div class="header">
+                <h2>Localiza Cloud</h2>  
+                <ul>
+                        <li><a class="active" href="#home">Home</a></li>
+                        <li><a href="#appmovil">App Móvil</a>  </li>
+                        <li><a href="#alta">Alta</a>   </li>
+                        <li><a href="#acceder">Acceder</a>  </li>
+                        <li style="float:right"><a href="#contacto">Contacto</a></li>
+                    </ul>                 
+            </div>            
+
+
+            <div class="left">
+                Left
+            </div>
+            <div class="carrousel" >
+                    <div class="imagenes-carrousel">
+                        <img  src="img1.jpg"  alt="imagenes" id="id-imagen" style="height: 400px; width: 100%;">
+                    </div>
+                    
+                   <div class="menu">                       
+                       <h2>Localiza Cloud</h2>                       
+                       <p>La web para gestionar tus rutas</p>
+                       <p>Con localiza cloud puedes gestionar tus rutas y localizar tus contactos</p> 
+
+                       <div class="flex-container">
+                            <div class="boton-app" style="float: left;">
+                                <p style="margin-bottom:30px"><strong> Descarga la app</strong></p>
+                                <a href="#linkapp" class="button" >App</a>
+                            </div>
+                            <div class="boton-nuevo" >
+                                <p><strong> Nuevo Usuario?</strong></p>
+                                <button class="button" id="btn_alta_usu">Alta</button>
+                            </div>
+                            <div class="boton-usu" style="float: right;">
+                                <p><strong> Acceso Usuarios</strong></p>
+                                <button class="button" id="btn_acces_usu">Acceso</button>
+                            </div>
+                       </div>
+
+
+                       <!--****************** Modal para nuevo usuario*****************  -->  
+                       <div class="modal-1" id="modal-1-id">                      
+                       <div class="modal-nuevousu">      
+                           
+                            <div class="modal-header">                                    
+                                <span class="close-modal">&times;</span>
+                                <h2>Nuevo Usuario</h2>
+                            </div>
+                            
+                                <form action="" name=""  id="formRegistro" method="POST">
+                                                                           
+                                    <label for="id-nombre" >Nombre: </label>                                       
+                                    <input type="text" placeholder="Introducir nombre" name="nombre" id="id-nombre">                                   
+                                       
+                                    <label for="id-email">Email:</label>                                       
+                                    <input type="email" name="email" placeholder="Introducir email" id="id-email">
+                                       
+                                    <label for="id-password">Contraseña:</label>                                      
+                                    <input type="password" name="password" placeholder="Introducir contraseña" id="id-password">
+                                       
+                                    <label for="id-password2">Repetir contraseña:</label>                                      
+                                    <input type="password" name="password2" placeholder="Repetir contraseña" id="id-password2">                                    
+                                                                       
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="button" id="bot-cerrar-modal">Cerrar</button>                               
+                                <input type="submit" value="Enviar" class="button" id="btnEnviar">
+                                <!--<input type="button" value="Enviar" class="button" id="btnEnviar">-->
+                                <!--<button type="button" class="button" id="btnEnviar">Enviar</button>-->
+                            </div>
+                        </div>    
+                        </div>
+                    <!-- **************************************************************-->  
+                    <!-- *************** Modal para Acceso Usuario -->     
+                    
+                        <div class="modal-1" id="modal-2-id">                      
+                        <div class="modal-nuevousu">      
+                            
+                             <div class="modal-header">                                    
+                                 <span class="close-modal">&times;</span>
+                                 <h2>Acceso Usuario</h2>
+                             </div>
+                             <div class="modal-body" id="id-modal-body">
+                                 <form action="" name="formularioLogin"  id="formRegistro2" method="POST">
+                                                                           
+                                     <label for="id-email" id="id-label-email">Email:</label>                                       
+                                     <input type="email" name="email" placeholder="Introducir email" id="id-email">
+                                        
+                                     <label for="id-password">Contraseña:</label>                                      
+                                     <input type="password" name="password" placeholder="Introducir contraseña" id="id-password">                                        
+                                  
+                                 </form>
+                             </div>
+                             <div class="modal-footer">
+                                 <button class="button" id="bot-cerrar-modal">Cerrar</button>                               
+                                 <input type="submit" value="Enviar" class="button" id="btnAcceder">
+                                 <!--<input type="button" value="Enviar" class="button" id="btnEnviar">-->
+                                 <!--<button type="button" class="button" id="btnEnviar">Enviar</button>-->
+                             </div>
+                         </div>    
+                         </div>
+                         <!-- * *************************************************************************   -->                                                          
+                       
+                </div>
+            </div>
+            <div class="right">
+                Right
+            </div>            
+            <div class="footer">
+                Footer
+            </div>
+            
+        </div>      
+        <script>
+            
+            // EJEMPLOS DE NODOS DEL DOM , CREACION DE ELEMENTOS EN UN FORMULARIO
+            var v = document.getElementById("formRegistro2");
+            var x = v.childNodes[1];
+            var y = x.childNodes[0].nodeValue;            
+            console.log(y); // salida: "Email: ""
+
+            /* Para ver tipo de nodos 
+             var len = document.getElementById("formRegistro2").childNodes;
+                for (i=0; i<document.getElementById("formRegistro2").childNodes.length; ++i){
+                    console.log("nodos "+len[i].nodeName+" nodoType "+len[i].nodeType);
+                }
+             */       
+
+            //Ejemplo de creacion de elementos  en el formulario de acceso a usuarios. 
+           //Vamos a crear un label y un input para ver como funciona
+            document.getElementById("btn_acces_usu").addEventListener("click", crearFormu);         
+
+            function crearFormu(){              
+
+               document.getElementById("modal-2-id").style.display="block";
+               //input nombre:
+               var input1 = document.createElement("input");
+               input1.setAttribute("type","text");
+               input1.setAttribute("placeholder", "Introducir nombre");     
+                //label nombre:
+               var label_name = document.createElement("label");
+               label_name.setAttribute("id","id-label-name");
+               var node_label_name = document.createTextNode("Nombre: ");
+               label_name.appendChild(node_label_name);              
+              
+              var label_email = document.getElementById("id-label-email"); //creado en formulario
+               //Metemos primero el input entre el label email y el form 
+              v.insertBefore(input1, label_email);   
+             //y luego metemos el label nombre entre el input y el form 
+              v.insertBefore(label_name, input1);                
+            }
+            
+        </script>
+        
+            
+    </body>
+</html>
+

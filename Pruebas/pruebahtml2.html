@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<style>
+            .modal-nuevousu{
+                background-color: #ccc;
+                padding: 20px;
+                border-radius: 5px;
+                width: 30%;
+            }
+            input[type=text], input[type=email], input[type=password]{
+                display:inline-block;
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .close-modal {
+                color: white;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close-modal:hover,
+            .close-modal:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .button{
+                text-decoration: none;
+                border: none;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin: 5px;
+                cursor: pointer;
+                background-color: #4CAF50;
+
+                border: none;
+                border-radius: 7px;
+                box-shadow: 0 4px #999;             
+            }
+            .button:hover {background-color: #3e8e41}
+</style>
+<script>
+  
+    
+
+</script>
+<body>
+
+<h3>Using CSS to style an HTML Form</h3>
+
+<!-- Modal para nuevo usuario  -->  
+<div class="modal-nuevousu">       
+                           
+        <div class="modal-header">
+            <span class="close-modal">&times;</span>
+            <h2>Nuevo Usuario</h2>
+        </div>
+        <div class="modal-content">
+            <form action="/action_page.php"  id="formRegistro" method="POST">
+                <label for="id-nombre" >Nombre: </label>
+                <input type="text" placeholder="Introducir nombre" name="nombre" id="id-nombre">
+
+                <label for="id-email">Email:</label>
+                <input type="email" name="email" placeholder="Introducir email" id="id-email">
+
+                <label for="id-password">Contraseña:</label>
+                <input type="password" name="password" placeholder="Introducir contraseña" id="id-password">
+
+                <label for="id-password2">Repetir contraseña:</label>
+                <input type="password" name="password2" placeholder="Repetir contraseña" id="id-password2">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="button">Cerrar</button>                               
+            <input type="submit" value="Enviar" class="button" id="btnEnviar">
+            <!--<input type="button" value="Enviar" class="button" id="btnEnviar">-->
+            <!--<button type="button" class="button" id="btnEnviar">Enviar</button>-->
+        </div>
+</div>
+
+
+</body>
+</html>
