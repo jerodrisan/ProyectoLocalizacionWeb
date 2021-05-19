@@ -297,8 +297,8 @@ class Funciones_Contactos{
 
     public function send_notification($token, $message){
 
-        define( 'API_ACCESS_KEY', 'AAAABLm_RV4:APA91bFTGDpJ5NcJpqOoOU0sZGOUsqyytWBh3dDhV4EOl7n6ZjffTJrqrFj_99NWHF9PHgDZkWzv9qp2VPWDL0vu8ry-YuE2ZYii4C_EJnU6Ic9l-AKAbNy1KRtRgkqYzkA8AKoxv10j' );
-        //define ('API_ACCESS_KEY', 'AIzaSyDCJo6XThRE3UUMPErlxHKHonIEYV29Z4U');
+        define( 'API_ACCESS_KEY', 'la que corresponde' );
+        
         $url = 'https://fcm.googleapis.com/fcm/send';
        // $url = 'https://android.googleapis.com/gcm/send';
         //$url ='https://fcm.googleapis.com/v1/projects/pr-localizacion-1-a4fde/messages:send';
