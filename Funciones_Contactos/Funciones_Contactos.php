@@ -142,7 +142,7 @@ class Funciones_Contactos{
     
     
     
-    public function borrar_contactos($contactos, $solicitante){
+    public function borrar_contactos($solicitante,$contactos){
         
         //Recorremos el array y borramos en cada pasada:
         foreach ($contactos as $key => $value) {   
